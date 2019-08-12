@@ -11,13 +11,13 @@ func NewTrackManager(store om.TrackManager) (om.TrackManager, error) {
 }
 
 func (tm *trackManager) AddTrack(track om.Track) (err error) {
-	return
+	return tm.store.AddTrack(track)
 }
 
 func (tm *trackManager) LookupTrack(id int) (track om.Track, err error) {
 	return tm.store.LookupTrack(id)
 }
 
-func (tm *trackManager) GetTracks(startToken int) (tracks []om.Track, err error) {
+func (tm *trackManager) GetTracks(startToken int) (tracks []om.Track, nextToken int, err error) {
 	return tm.store.GetTracks(startToken)
 }
